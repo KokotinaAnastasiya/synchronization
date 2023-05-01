@@ -19,14 +19,14 @@ public class Main {
     public static void generateRouteAnalyze() {
         for (int i = 0; i < 1000; i++) {
             new Thread(() -> {
-                synchronized (sizeToFreq) {
-                    String result = generateRoute("RLRFR", 100);
-                    int sumR = 0;
-                    for (char c : result.toCharArray()) {
-                        if (c == 'R') {
-                            sumR++;
-                        }
+                String result = generateRoute("RLRFR", 100);
+                int sumR = 0;
+                for (char c : result.toCharArray()) {
+                    if (c == 'R') {
+                        sumR++;
                     }
+                }
+                synchronized (sizeToFreq) {
                     if (sizeToFreq.containsKey(sumR)) {
                         sizeToFreq.put(sumR, sizeToFreq.get(sumR) + 1);
                     } else {
